@@ -3,9 +3,12 @@ import zipfile
 import os
 
 # Google Drive file ID (dataset)
-file_id =""
-url= f"https://drive.google.com/uc?id={file_id}"
-output = ""
+file_id ="1b1pUYa-7BTdnpUPc652qRJyvzC28jeWc"
+url= f"https://drive.google.com/uc?id=1b1pUYa-7BTdnpUPc652qRJyvzC28jeWc"
+output = "data/BreakHis.zip"
+
+#Create the data directory if it doesn't exist
+os.makedirs("data", exist_ok=True)
 
 #Download the dataset
 print("Downloading dataset from google drive...")

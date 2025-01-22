@@ -14,10 +14,10 @@ model = load_model()
 
 # Preprocess the image
 def preprocess_image(image):
-    image = image.resize((224, 224))
-    image = np.array(image)             # Normalize pixel values
-    image = np.expand_dims(image, axis=0) # Add batch dimension
-    return image
+    img = image.resize((224, 224))  # Resize to match model input size
+    img_array = np.array(img) / 255.0  # Normalize pixel values
+    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+    return img_array
 
 # Streamlit app UI
 st.title("Breast Cancer Detector")
@@ -37,8 +37,8 @@ if uploaded_file is not None:
 
     # Display the result
     if prediction[0] > 0.5:
-        st.write("The model predicts: **malignant**")
+        st.write(f"The model predicts: **malignant**")
     else:
-        st.write("The model predicts: **Benign**")
+        st.write(f"The model predicts: **benign**")
 
 st.write("Note: This model is trained for educational for educational purposes and  should not be used for medical diagnosis")
